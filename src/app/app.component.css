@@ -1,0 +1,42 @@
+ #recipesTypes{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2em;  
+ }
+ 
+ #ingredients{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2em;  
+   }
+   
+/* form {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+  margin-top: 2em;
+  }
+  
+  input[type="text"] {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  button[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    margin-left: 10px;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #3e8e41;
+  }
+   */
