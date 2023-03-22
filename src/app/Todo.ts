@@ -1,6 +1,5 @@
-export class Todo{
+export class Todo {
 
-name : string;
-isCompleted:boolean;
-
+    name: string;
+    isCompleted: boolean;
 }

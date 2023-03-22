@@ -8,33 +8,54 @@
 
 </div>
 <div id="recipesTypes">
-<label for="type">Choose type of recipes: &nbsp;</label>
-<select name="type" id="type">
-  <option value="sweet">Sweet</option>
-  <option value="salted">Salted</option>
-  <option value="snack">Snack</option>
-  <option value="soup">Soup</option>
-</select>
+  <label for="type">Choose type of recipes: &nbsp;</label>
+  <select name="type" id="type">
+    <option value="sweet">Sweet</option>
+    <option value="salted">Salted</option>
+    <option value="snack">Snack</option>
+    <option value="soup">Soup</option>
+  </select>
 </div>
 
 
 <br>
 <div class="container" id="ingredients">
-  <div class = "col col-lg-3">
-  <div class="input-group mb-3">
-    <input type="text" class="form-control" placeholder="Enter the ingredients " aria-label="Enter Todo" aria-describedby="button-addon2" [(ngModel)]="newTodo">
-    <button class="btn btn-outline-secondary btn-primary" type="'button" id="button-addon2" style="color:white;" (click)="saveTodo()">Add
-    </button>
+  <div class="col col-lg-3">
+    <div class="input-group mb-3">
+      <input type="text" class="form-control" placeholder="Enter the ingredients " aria-label="Enter Todo"
+        aria-describedby="button-addon2" [(ngModel)]="newTodo">
+      <button class="btn btn-outline-secondary btn-primary" type="'button" id="button-addon2" style="color:white;"
+        (click)="saveTodo()">Add
+      </button>
+      <button class="btn btn-outline-secondary btn-primary" type="'button" id="button-addon2" style="color:black;"
+        (click)="showRecipes()">Find
+      </button>
+    </div>
+    <table class="table table-striped">
+      <tbody>
+        <tr *ngFor="let todo of todos; let i = index;">
+          <th scope="row">{{i+1}}</th>
+          <td class="{{(!todo.isCompleted)?'done':''}}" (click)="done(i)">{{todo.name}} </td>
+          <td style="color: red; font-weight: bold;" (click)="remove(i)">X</td>
+    </table>
+    <div >
+      <table class="table table-striped">
+        <tbody>
+          <tr *ngFor="let recipe of recipes">
+            <mat-card class="recipe-card" fxLayout="row wrap">
+              <mat-card-header>
+                <mat-card-title>
+                  {{recipe["nume"]}}
+                </mat-card-title>
+              </mat-card-header>
+              <img mat-card-image src="/assets/clatite.jpg">
+              <mat-card-content>
+                <p>
+                  {{recipe["Reteta"]}}
+                </p>
+              </mat-card-content>
+            </mat-card>
+      </table>
+    </div>
   </div>
-<table class="table table-striped">
-  <tbody>
-    <tr *ngFor="let todo of todos; let i = index;">
-      <th scope="row">{{i+1}}</th>
-      <td class="{{(!todo.isCompleted)?'done':''}}" (click)="done(i)">{{todo.name}} </td>
-      <td style="color: red; font-weight: bold;"(click)="remove(i)">X</td>
-</table>
 </div>
-</div>
-
-
-
