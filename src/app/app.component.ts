@@ -1,4 +1,4 @@
-import { Component, OnInit, Input,  } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ElementRef,  } from '@angular/core';
 import { Todo } from './Todo';
 import { getDocs, collection, QuerySnapshot, DocumentData, QueryDocumentSnapshot } from 'firebase/firestore';
 import { db } from 'src/environments/firebase';
@@ -15,6 +15,8 @@ export class AppComponent implements OnInit {
   newTodo: string;
   docSnap: QuerySnapshot<DocumentData>
   recipes: DocumentData[] = [];
+  
+  @ViewChild('types') types !: ElementRef;
 
   constructor(){}
 
@@ -24,17 +26,23 @@ export class AppComponent implements OnInit {
 
   async getRecipesFromFirestore() {
     this.docSnap = await getDocs(collection(db, "recipes"));
+    this.showAllRecipes()
   }
 
   showRecipes () {
     this.recipes = []
+    var counter = 0
+    console.log("showRecipes")
     this.docSnap.forEach((doc) => {
       var ingredients = doc.get("ingrediente");
+      var foodCategory = doc.get("categorie");
       if(ingredients){
         const recipeContainsAllIngredients = this.todos.every(element => {return ingredients.includes(element.name)});
-        if(recipeContainsAllIngredients){
+        if(recipeContainsAllIngredients && (foodCategory==this.types.nativeElement.value || this.types.nativeElement.value=="toate")){
           this.recipes.push(doc.data())
+          console.log(++counter)
         }
+
         // this.todos.forEach((todo) => {
         //   if(ingredients.includes(todo.name)){
         //     recipeExists++;
@@ -51,6 +59,24 @@ export class AppComponent implements OnInit {
     })
   }
 
+  showAllRecipes() {
+    this.recipes = []
+    var counter = 0
+    console.log("ALL")
+    this.docSnap.forEach((doc) => {
+      var ingredients = doc.get("ingrediente");
+      var foodCategory = doc.get("categorie");
+      if(ingredients && (foodCategory==this.types.nativeElement.value || this.types.nativeElement.value=="toate")){
+        this.recipes.push(doc.data())
+        console.log(++counter)
+      } 
+    })
+  }
+
+  onTypeChange(value: any) {
+    this.showRecipes()
+  }
+
   saveTodo() {
     if (this.newTodo) {
       let todo = new Todo();
@@ -61,6 +87,17 @@ export class AppComponent implements OnInit {
       console.log(this.todos)
     } else {
       alert('Please enter the ingredients');
+    }
+  }
+
+  removeIngredients(value: number){
+    console.log("remove Ingredients")
+    if(this.todos) {
+      this.remove(value)
+      this.showRecipes()
+    } else {
+      this.remove(value)
+      this.showRecipes()
     }
   }
 

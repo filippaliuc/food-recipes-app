@@ -9,7 +9,8 @@
 </div>
 <div id="recipesTypes">
 <label for="type">Alege categoria: &nbsp;</label>
-<select name="type" id="type">
+<select #types name="type" id="type" (change)="onTypeChange($event)">
+  <option value="toate">toate</option>
   <option value="desert">desert</option>
   <option value="gustare">gustare</option>
   <option value="fel principal">fel principal</option>
@@ -34,25 +35,25 @@
         <tr *ngFor="let todo of todos; let i = index;">
           <th scope="row">{{i+1}}</th>
           <td class="{{(!todo.isCompleted)?'done':''}}" (click)="done(i)">{{todo.name}} </td>
-          <td style="color: red; font-weight: bold;" (click)="remove(i)">X</td>
+          <td style="color: red; font-weight: bold;" (click)="removeIngredients(i)">X</td>
     </table>
     <div >
       <table class="table table-striped">
         <tbody>
-          <tr *ngFor="let recipe of recipes">
-            <mat-card class="recipe-card" fxLayout="row wrap">
-              <mat-card-header>
-                <mat-card-title>
-                  {{recipe["nume"]}}
-                </mat-card-title>
-              </mat-card-header>
-              <img mat-card-image src="/assets/clatite.jpg">
-              <mat-card-content>
-                <p>
-                  {{recipe["Reteta"]}}
-                </p>
-              </mat-card-content>
-            </mat-card>
+          <tr *ngFor="let recipe of recipes"  fxLayout="row">
+              <mat-card class="recipe-card" fxLayout="row" fxLayoutAlign="space-between center">
+                <img mat-card-image id="image">
+                <mat-card-header>
+                  <mat-card-title>
+                    {{recipe["nume"]}}
+                  </mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                        <p>
+                          {{recipe["Reteta"][0]}}
+                        </p>
+                </mat-card-content>
+              </mat-card>
       </table>
     </div>
   </div>
