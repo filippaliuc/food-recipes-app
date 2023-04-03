@@ -13,5 +13,18 @@
  }
 
  .recipe-card{
-    max-width: 400px;
+    height: 225px;
+    max-height: 300px;
+    max-width: 1200px;
+    /* max-height: 300px; */
+    padding-left: 275px;
+    margin: 20px;
+ }
+
+ .card-image{
+  width: 20%;
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  margin: 20px;
  }

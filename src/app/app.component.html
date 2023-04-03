@@ -41,14 +41,14 @@
       <table class="table table-striped">
         <tbody>
           <tr *ngFor="let recipe of recipes"  fxLayout="row">
-              <mat-card class="recipe-card" fxLayout="row" fxLayoutAlign="space-between center">
-                <img mat-card-image id="image">
-                <mat-card-header>
+              <mat-card class="recipe-card">
+                <mat-card-header class="card-header">
                   <mat-card-title>
                     {{recipe["nume"]}}
                   </mat-card-title>
                 </mat-card-header>
-                <mat-card-content>
+                <img mat-card-image class="card-image" id="image" src="../assets/{{recipe['imagine']}}.jpg">
+                <mat-card-content class="card-content">
                         <p>
                           {{recipe["Reteta"][0]}}
                         </p>

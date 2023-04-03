@@ -40,7 +40,7 @@ export class AppComponent implements OnInit {
         const recipeContainsAllIngredients = this.todos.every(element => {return ingredients.includes(element.name)});
         if(recipeContainsAllIngredients && (foodCategory==this.types.nativeElement.value || this.types.nativeElement.value=="toate")){
           this.recipes.push(doc.data())
-          console.log(++counter)
+          // console.log(++counter)
         }
 
         // this.todos.forEach((todo) => {
@@ -66,9 +66,10 @@ export class AppComponent implements OnInit {
     this.docSnap.forEach((doc) => {
       var ingredients = doc.get("ingrediente");
       var foodCategory = doc.get("categorie");
+      // console.log(doc.get("imagine"))
       if(ingredients && (foodCategory==this.types.nativeElement.value || this.types.nativeElement.value=="toate")){
         this.recipes.push(doc.data())
-        console.log(++counter)
+        // console.log(++counter)
       } 
     })
   }
