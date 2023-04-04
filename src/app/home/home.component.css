@@ -1,0 +1,85 @@
+#recipesTypes {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2em;
+  }
+ 
+  #ingredients {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2em;
+  }
+ 
+  .recipe-card{
+     height: 225px;
+     max-height: 300px;
+     max-width: 1200px;
+     /* max-height: 300px; */
+     padding-left: 275px;
+     margin: 20px;
+     background-color: #EFEFEF;
+  }
+ 
+  .card-image{
+   width: 20%;
+   position: absolute;
+   top: 5px;
+   left: 5px;
+   margin: 20px;
+  }
+ 
+  .example-form-field {
+   width: 700px;
+   margin-left: 20px;
+ }
+ 
+ /* .clear-button{
+   border-radius: 40px;
+   margin: 5px;
+ } */
+ 
+ /* .example-chip-list {
+   width: 500px;
+   margin-left: 20px;
+   height: 200px;
+ } */
+ 
+ .ingredient-list{
+   margin-left: 20px;
+ }
+ 
+ mat-chip-listbox{
+   display: inline-block;
+   margin-left: 10px;
+ }
+ 
+ .chosed-ingredient{
+   padding-right: 18px;
+ } 
+ 
+ .cancel-icon{
+   position: absolute;
+   color: red;
+   top: 5px;
+   /* background-color: red; */
+   transform: scale(0.7);
+ }
+ 
+ .search-container {
+   display: inline-block;
+   align-items: center;
+   justify-content: center;
+ }
+ 
+ .add-button {
+   margin-left: 20px;
+   margin-bottom: 16px;
+   padding: 20px;
+ }
+ 
+ .add-button-icon{
+   position: absolute;
+   top: 10;
+ }

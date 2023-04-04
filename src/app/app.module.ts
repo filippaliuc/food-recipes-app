@@ -15,11 +15,16 @@ import {MatButtonModule} from '@angular/material/button';
 import { firebaseConfig } from '../environments/firebase';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DetailedRecipeComponent } from './detailed-recipe/detailed-recipe.component';
+import { AppRoutingModule } from './app-routing.module';
+import { HomeComponent } from './home/home.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    DetailedRecipeComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +39,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatFormFieldModule,
     MatButtonModule,
     provideFirebaseApp(() => initializeApp(firebaseConfig)),
-    provideFirestore(() => getFirestore())
+    provideFirestore(() => getFirestore()),
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
