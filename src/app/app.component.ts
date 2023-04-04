@@ -76,7 +76,7 @@ export class AppComponent implements OnInit {
       this.newTodo = '';
       console.log(this.todos)
     } else {
-      alert('Please enter the ingredients');
+      alert('Introdu ingredientul');
     }
   }
 
@@ -97,25 +97,5 @@ export class AppComponent implements OnInit {
 
   remove(id: number) {
     this.todos = this.todos.filter((v, i) => i !== id);
-  }
-
-  addIngredient(event: MatChipInputEvent): void {
-    const value = (event.value || '').trim();
-
-    // Add our fruit
-    if (value) {
-      this.todos.push({name: value, isCompleted: true});
-    }
-
-    // Clear the input value
-    event.chipInput!.clear();
-  }
-
-  removeIngredient(todo: Todo): void {
-    const index = this.todos.indexOf(todo);
-
-    if (index >= 0) {
-      this.todos.splice(index, 1);
-    }
   }
 }

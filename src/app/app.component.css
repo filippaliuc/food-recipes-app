@@ -66,3 +66,20 @@ mat-chip-listbox{
   /* background-color: red; */
   transform: scale(0.7);
 }
+
+.search-container {
+  display: inline-block;
+  align-items: center;
+  justify-content: center;
+}
+
+.add-button {
+  margin-left: 20px;
+  margin-bottom: 16px;
+  padding: 20px;
+}
+
+.add-button-icon{
+  position: absolute;
+  top: 10;
+}
