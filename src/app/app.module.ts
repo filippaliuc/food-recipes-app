@@ -12,7 +12,10 @@ import { MatChipsModule } from '@angular/material/chips';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatButtonModule} from '@angular/material/button';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {ScrollingModule} from '@angular/cdk/scrolling';
 import { firebaseConfig } from '../environments/firebase';
+import {MatSelectModule} from '@angular/material/select';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DetailedRecipeComponent } from './detailed-recipe/detailed-recipe.component';
@@ -38,6 +41,9 @@ import { HomeComponent } from './home/home.component';
     MatChipsModule,
     MatFormFieldModule,
     MatButtonModule,
+    MatGridListModule,
+    ScrollingModule,
+    MatSelectModule,
     provideFirebaseApp(() => initializeApp(firebaseConfig)),
     provideFirestore(() => getFirestore()),
     AppRoutingModule
