@@ -21,8 +21,16 @@
 <div class="container" id="ingredients">
   <div class="col col-lg-3">
     <div class="input-group mb-3">
-      <input type="text" class="form-control" placeholder="Enter the ingredients " aria-label="Enter Todo"
-        aria-describedby="button-addon2" [(ngModel)]="newTodo">
+      <!-- <input type="text" class="form-control" placeholder="Enter the ingredients " aria-label="Enter Todo"
+        aria-describedby="button-addon2" [(ngModel)]="newTodo"> -->
+      <mat-form-field class="example-form-field">
+        <mat-label>Ingredient</mat-label>
+        <input matInput type="text" [(ngModel)]="newTodo">
+        <button class="clear-button" *ngIf="newTodo" matSuffix mat-icon-button aria-label="Clear" (click)="newTodo=''">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
+        
       <button class="btn btn-outline-secondary btn-primary" type="'button" id="button-addon2" style="color:white;"
         (click)="saveTodo()">Add
       </button>
@@ -30,14 +38,25 @@
         (click)="showRecipes()">Find
       </button>
     </div>
-    <table class="table table-striped">
+    <!-- <table class="table table-striped">
       <tbody>
         <tr *ngFor="let todo of todos; let i = index;">
           <th scope="row">{{i+1}}</th>
           <td class="{{(!todo.isCompleted)?'done':''}}" (click)="done(i)">{{todo.name}} </td>
           <td style="color: red; font-weight: bold;" (click)="removeIngredients(i)">X</td>
-    </table>
-    <div >
+    </table> -->
+
+
+    <div class="ingredient-list">
+      <mat-chip-listbox aria-label="Fish selection" *ngFor="let todo of todos; let i=index">
+        <mat-chip-option class="chosed-ingredient">
+          {{todo.name}}
+          <mat-icon class="cancel-icon" (click)="removeIngredients(i)">cancel</mat-icon>
+        </mat-chip-option>
+      </mat-chip-listbox>
+    </div>
+
+    <div>
       <table class="table table-striped">
         <tbody>
           <tr *ngFor="let recipe of recipes"  fxLayout="row">

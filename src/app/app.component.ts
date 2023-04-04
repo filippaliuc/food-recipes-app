@@ -1,6 +1,8 @@
 import { Component, OnInit, Input, ViewChild, ElementRef,  } from '@angular/core';
 import { Todo } from './Todo';
 import { getDocs, collection, QuerySnapshot, DocumentData, QueryDocumentSnapshot } from 'firebase/firestore';
+import { MatChipEditedEvent , MatChipInputEvent } from '@angular/material/chips';
+import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import { db } from 'src/environments/firebase';
 
 @Component({
@@ -42,19 +44,6 @@ export class AppComponent implements OnInit {
           this.recipes.push(doc.data())
           // console.log(++counter)
         }
-
-        // this.todos.forEach((todo) => {
-        //   if(ingredients.includes(todo.name)){
-        //     recipeExists++;
-        //   } 
-        // })
-        // if(recipeExists == this.todos.length){
-        //   this.recipes.push(doc.data())
-        // }
-        // doc.get("Ingrediente").forEach((ingredient: string) => {
-        //   // console.log(ingredient)
-        //   this.todos[0].includes(ingredient)
-        // })
       }
     })
   }
@@ -108,5 +97,25 @@ export class AppComponent implements OnInit {
 
   remove(id: number) {
     this.todos = this.todos.filter((v, i) => i !== id);
+  }
+
+  addIngredient(event: MatChipInputEvent): void {
+    const value = (event.value || '').trim();
+
+    // Add our fruit
+    if (value) {
+      this.todos.push({name: value, isCompleted: true});
+    }
+
+    // Clear the input value
+    event.chipInput!.clear();
+  }
+
+  removeIngredient(todo: Todo): void {
+    const index = this.todos.indexOf(todo);
+
+    if (index >= 0) {
+      this.todos.splice(index, 1);
+    }
   }
 }
